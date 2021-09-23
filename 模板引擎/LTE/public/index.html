@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../dist/lte.js"></script>
+</head>
+<style>
+    .item{
+        color: red;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul>
+            {{#student}}
+            <li class="item">
+                名字叫：{{name}}，年龄：{{age}}，爱好是：
+                    {{#hobby}}
+                        <span>{{.}}</span>,
+                    {{/hobby}}
+            </li>
+            {{/student}}
+        </ul>
+    </div>
+</body>
+<script>
+    var str = document.getElementById("app").innerHTML;
+    var data = {
+        student:[
+            {name:'陈一',age:15,hobby:['足球','唱歌']},
+            {name:'梁二',age:20,hobby:['跳舞']},
+            {name:'张三',age:35,hobby:['看书']},
+        ]
+    }
+    document.getElementById("app").innerHTML = LTE.render(str,data);
+</script>
+</html>
